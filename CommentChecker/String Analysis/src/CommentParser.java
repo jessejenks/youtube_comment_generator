@@ -43,9 +43,9 @@ public class CommentParser {
 			
 			// Word count
 			if(!wordCount.containsKey(word)){
-				wordCount.put(word, 0);
+				wordCount.put(word.toLowerCase(), 1);
 			}else{
-				wordCount.put(word, wordCount.get(word) + 1);
+				wordCount.put(word.toLowerCase(), wordCount.get(word) + 1);
 			}
 			
 			// Sentence starters
@@ -76,10 +76,10 @@ public class CommentParser {
 	
 	public void printWordCount(){
 	
-		System.out.println("Channel: ");
+		System.out.print("Channel: ");
 		System.out.println(this.channel);
 		System.out.println("==========");
-		System.out.println("Comment: ");
+		System.out.print("Comment: ");
 		System.out.println(this.comment);
 		System.out.println("==========");
 		
@@ -106,13 +106,13 @@ public class CommentParser {
 		System.out.println(CommentStatistics.percentPositive(this));
 		System.out.print("Percent words negative: ");
 		System.out.println(CommentStatistics.percentNegative(this));
-		System.out.print("Percent words racist");
+		System.out.print("Percent words racist: ");
 		System.out.println(CommentStatistics.percentRacist(this));
-		System.out.print("Percent words sexist");
+		System.out.print("Percent words sexist: ");
 		System.out.println(CommentStatistics.percentSexist(this));
-		System.out.print("Percent words homophobic");
+		System.out.print("Percent words homophobic: ");
 		System.out.println(CommentStatistics.percentHomophobic(this));
-		System.out.print("Percent words profanity");
+		System.out.print("Percent words profanity: ");
 		System.out.println(CommentStatistics.percentProfanity(this));
 		System.out.print("Percent words miscellaneous: ");
 		System.out.println(CommentStatistics.percentMiscellaneous(this));

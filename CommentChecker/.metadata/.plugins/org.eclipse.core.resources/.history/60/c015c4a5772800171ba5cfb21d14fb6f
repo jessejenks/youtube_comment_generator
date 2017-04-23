@@ -1,0 +1,27 @@
+
+public class Tester {
+
+	public static void main(String[] args){
+		
+		// Parse the files for positive and negative words
+		CommentStatistics.positiveWords = parsePositive();
+		CommentStatistics.negativeWords = parseNegative();
+		
+		String channel = "H3H3";
+		String comment = "Wow Ethan! Great moves, keep it up. Proud of you.";
+		
+		CommentParser parser = new CommentParser(channel, comment);
+		parser.printWordCount();
+		parser.printStats();
+	}
+	
+	
+	public static void parsePositive(){
+		
+	}
+	
+	
+	public static void parseNegative(){
+		
+	}
+}

@@ -1,0 +1,48 @@
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.ArrayList;
+import java.util.Scanner;
+
+public class Tester {
+
+	public static void main(String[] args){
+		
+		// Parse the files for positive and negative words
+		CommentStatistics.positiveWords = Tester.parsePositive();
+		CommentStatistics.negativeWords = Tester.parseNegative();
+		
+		String channel = "H3H3";
+		String comment = "Wow Ethan! Great moves, keep it up. Proud of you.";
+		
+		CommentParser parser = new CommentParser(channel, comment);
+		parser.printWordCount();
+		parser.printStats();
+	}
+	
+	
+	public static String[] parsePositive(){
+		
+		// Storing the words
+		ArrayList<String> posWords = new ArrayList<String>();
+		
+		// Setting up the scanner
+		File posFile = new File("parsePositive.txt");
+		Scanner scan;
+		try {
+			scan = new Scanner(posFile);
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		}
+		
+		while(scan.hasNext()){
+			
+		}
+		return null;
+	}
+	
+	
+	public static String[] parseNegative(){
+		
+		return null;
+	}
+}

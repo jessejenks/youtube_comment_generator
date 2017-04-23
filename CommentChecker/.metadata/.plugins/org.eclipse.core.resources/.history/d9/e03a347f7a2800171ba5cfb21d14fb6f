@@ -1,0 +1,75 @@
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Scanner;
+
+public class Tester {
+
+	public static void main(String[] args){
+		
+		// Parse the files for positive and negative words
+		CommentStatistics.positiveWords = Tester.parsePositive();
+		CommentStatistics.negativeWords = Tester.parseNegative();
+		
+		String channel = "H3H3";
+		String comment = "Wow Ethan! Great moves, keep it up. Proud of you.";
+		
+		CommentParser parser = new CommentParser(channel, comment);
+		parser.printWordCount();
+		parser.printStats();
+	}
+	
+	
+	public static String[] parsePositive(){
+		
+		// Storing the words
+		ArrayList<String> posWords = new ArrayList<String>();
+		
+		// Setting up the scanner
+		File posFile = new File("src/parsepositive.txt");
+		System.out.println(posFile.getAbsolutePath());
+		Scanner scan = null;
+		try {
+			scan = new Scanner(posFile);
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		}
+		
+		// Just go through the file and add to the array list
+		while(scan.hasNext()){			
+			String nextWord = scan.nextLine();
+			posWords.add(nextWord);			
+		}
+		
+		// Parse to array for variable
+		Object[] middleman = posWords.toArray();
+		return Arrays.copyOf(middleman, middleman.length, String[].class);
+	}
+	
+	
+	public static String[] parseNegative(){
+		
+		// Storing the words
+		ArrayList<String> negWords = new ArrayList<String>();
+		
+		// Setting up the scanner
+		File negFile = new File("src/parsenegative.txt");
+		Scanner scan = null;
+		try {
+			scan = new Scanner(negFile);
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		}
+		
+		// Just go through the file and add to the array list
+		while(scan.hasNext()){			
+			String nextWord = scan.nextLine();
+			negWords.add(nextWord);			
+		}
+		
+		// Parse to array for variable
+		Object[] middleman = negWords.toArray();
+		return Arrays.copyOf(middleman, middleman.length, String[].class);
+	}
+}
