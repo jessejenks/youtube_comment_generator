@@ -107,7 +107,7 @@ public class CSVParser {
 		System.out.println("Words: ");
 		
 		Set<String> keys = wordCount.keySet();
-		//keys = this.sortKeys(keys);
+		keys = this.sortKeys(keys);
 		
 		for(String word : keys){
 			

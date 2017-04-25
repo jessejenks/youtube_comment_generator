@@ -107,7 +107,7 @@ public class CSVParser {
 		System.out.println("Words: ");
 		
 		Set<String> keys = wordCount.keySet();
-		//keys = this.sortKeys(keys);
+		keys = this.sortKeys(keys);
 		
 		for(String word : keys){
 			
@@ -122,7 +122,7 @@ public class CSVParser {
 		
 		Set<String> copy = keys;
 		Set<String> sorted = new HashSet<String>();		
-		String[] allKeys = keys.toArray(new String[keys.size()]);
+		String[] allKeys = (String[]) keys.toArray();
 		
 		while(allKeys.length > 0){
 			
@@ -138,7 +138,7 @@ public class CSVParser {
 			
 			sorted.add(currMax);
 			copy.remove(currMax);
-			allKeys = keys.toArray(new String[copy.size()]);
+			allKeys = (String[]) keys.toArray();
 		}
 		
 		return sorted;
