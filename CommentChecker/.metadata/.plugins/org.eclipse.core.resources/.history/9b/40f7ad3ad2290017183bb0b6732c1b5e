@@ -3,7 +3,6 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Scanner;
@@ -81,7 +80,8 @@ public class CSVParser {
 		System.out.println("==========");
 		System.out.println("Words: ");
 		
-		ArrayList<String> keys = this.sortKeys(wordCount.keySet());
+		Set<String> keys = this.sortKeys(wordCount.keySet());
+		Set<String> keys = wordCount.keySet();
 		
 		for(String word : keys){
 			
@@ -92,30 +92,27 @@ public class CSVParser {
 		
 	}
 	
-	private ArrayList<String> sortKeys(Set<String> keys){
+	private Set<String> sortKeys(Set<String> keys){
 		
-		ArrayList<String> sorted = new ArrayList<String>();
+		Set<String> copy = keys;
+		Set<String> sorted = new HashSet<String>();		
 		String[] allKeys = keys.toArray(new String[keys.size()]);
 		
-		for(int i = 0; i < allKeys.length; i++){
+		while(allKeys.length > 0){
 			
-			String currMax = "";
-			for(int k = 0; k < allKeys.length; k++){
-				if(!sorted.contains(allKeys[k])){
-					currMax = allKeys[k];
-					break;
-				}
-			}
+			String currMax = allKeys[0];
 			
-			for(int j = 0; j < allKeys.length; j++){
+			for(int i = 0; i < allKeys.length; i++){
 				
-				if(!sorted.contains(allKeys[j]) && wordCount.get(allKeys[j]) >= wordCount.get(currMax)){
-					currMax = allKeys[j];
+				if(wordCount.get(allKeys[i]) >= wordCount.get(currMax)){
+					currMax = allKeys[i];
 				}
 				
 			}
 			
 			sorted.add(currMax);
+			copy.remove(currMax);
+			allKeys = keys.toArray(new String[copy.size()]);
 		}
 		
 		return sorted;

@@ -82,6 +82,7 @@ public class CSVParser {
 		System.out.println("Words: ");
 		
 		ArrayList<String> keys = this.sortKeys(wordCount.keySet());
+		//Set<String> keys = wordCount.keySet();
 		
 		for(String word : keys){
 			
@@ -99,7 +100,7 @@ public class CSVParser {
 		
 		for(int i = 0; i < allKeys.length; i++){
 			
-			String currMax = "";
+			String currMax;
 			for(int k = 0; k < allKeys.length; k++){
 				if(!sorted.contains(allKeys[k])){
 					currMax = allKeys[k];
@@ -119,5 +120,6 @@ public class CSVParser {
 		}
 		
 		return sorted;
+
 	}
 }

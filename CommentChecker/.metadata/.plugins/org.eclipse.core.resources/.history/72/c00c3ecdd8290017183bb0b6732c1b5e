@@ -82,6 +82,7 @@ public class CSVParser {
 		System.out.println("Words: ");
 		
 		ArrayList<String> keys = this.sortKeys(wordCount.keySet());
+		//Set<String> keys = wordCount.keySet();
 		
 		for(String word : keys){
 			
@@ -119,5 +120,6 @@ public class CSVParser {
 		}
 		
 		return sorted;
+
 	}
 }

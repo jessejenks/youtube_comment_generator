@@ -82,6 +82,7 @@ public class CSVParser {
 		System.out.println("Words: ");
 		
 		ArrayList<String> keys = this.sortKeys(wordCount.keySet());
+		//Set<String> keys = wordCount.keySet();
 		
 		for(String word : keys){
 			
@@ -95,29 +96,37 @@ public class CSVParser {
 	private ArrayList<String> sortKeys(Set<String> keys){
 		
 		ArrayList<String> sorted = new ArrayList<String>();
-		String[] allKeys = keys.toArray(new String[keys.size()]);
 		
-		for(int i = 0; i < allKeys.length; i++){
+		for(int i = 0; i < keys.size(); i++){
 			
-			String currMax = "";
-			for(int k = 0; k < allKeys.length; k++){
-				if(!sorted.contains(allKeys[k])){
-					currMax = allKeys[k];
-					break;
-				}
-			}
-			
-			for(int j = 0; j < allKeys.length; j++){
-				
-				if(!sorted.contains(allKeys[j]) && wordCount.get(allKeys[j]) >= wordCount.get(currMax)){
-					currMax = allKeys[j];
-				}
+			for(int j = 0; j < keys.size(); j++){
 				
 			}
 			
-			sorted.add(currMax);
 		}
 		
-		return sorted;
+		
+//		Set<String> copy = keys;
+//		Set<String> sorted = new HashSet<String>();		
+//		String[] allKeys = keys.toArray(new String[keys.size()]);
+//		
+//		while(allKeys.length > 0){
+//			
+//			String currMax = allKeys[0];
+//			
+//			for(int i = 0; i < allKeys.length; i++){
+//				
+//				if(wordCount.get(allKeys[i]) >= wordCount.get(currMax)){
+//					currMax = allKeys[i];
+//				}
+//				
+//			}
+//			
+//			sorted.add(currMax);
+//			copy.remove(currMax);
+//			allKeys = keys.toArray(new String[copy.size()]);
+//		}
+//		
+//		return sorted;
 	}
 }
