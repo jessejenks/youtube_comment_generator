@@ -7,15 +7,6 @@ public class CommentStatistics {
 	// Positive and negative are parsed on the main call
 	public static String[] positiveWords;
 	public static String[] negativeWords;
-	// WARNING: THERE ARE RACIAL, SEXIST, AND HOMOPHOBIC SLURS HERE
-	// This is meant purely as documentation of whatever text is generated. 
-	// This is not to condone the use of this dialogue, but to provide some statistical significance of what is generated.
-	private static String[] emojiWords = {":)", ":(", ":D", "D:", ":P", ":p", "B)", ":'(", "X)", "0.o", "XD"};
-	private static String[] swearWords = {"damn", "hell", "shit", "ass", "crap", "fuck", "piss", "dick", "cock", "pissing", "fucking", "shitting", "asshole", "douchebag"};
-	private static String[] racistWords = {"nigger", "nigga", "chink", "towelhead", "goop", "jap", "darkie", "gyp", "gypsie", "uppity", "gypsy"};
-	private static String[] sexistWords = {"bitch", "whore", "slut", "cunt", "pussy"};
-	private static String[] homophobicWords = {"faggot", "fag", "assfag"};
-	private static String[] miscellaneousWords = {"the", "as", "is", "I", "you", "he", "she", "his", "her", "hers", "him", "there", "that", "this", "to", "too", "us", "we", "those", "these", "them", "your", "you're", "it", "it's", "so", "who", "what", "when", "where", "why"};
 	
 	// Computes the average word length of a comment
 	public static int avgWordLength(CommentParser comment){
@@ -29,139 +20,50 @@ public class CommentStatistics {
 		
 		return (allLength / comment.numWords);
 	}
-	  // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ \\
-	 // The following methods all compute percentage frequencies of a word's usage in a comment \\
-	// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~  \\
-	
-	// Words in all caps
-	public static double percentAllCaps(CommentParser comment){		
-		return ((double)comment.numUppercase / (double)comment.numWords);
-	}
 	
 	// Positive words
-	public static double percentPositive(CommentParser comment){
+	public static int countPositive(CommentParser comment){
 		
 		int posCount = 0;
 		Set<String> keys = comment.wordCount.keySet();
 		
 		for(String word : keys){
 			if(Arrays.asList(CommentStatistics.positiveWords).contains(word)){
-				posCount += (word.length() * comment.wordCount.get(word));
-	
+				posCount += comment.wordCount.get(word);	
 			}
 		}		
 		
-		return ((double) posCount / (double) comment.numWords);
+		return posCount;
 	}
 	
 	// Negative words
-	public static double percentNegative(CommentParser comment){
+	public static int countNegative(CommentParser comment){
 		
 		int negCount = 0;
 		Set<String> keys = comment.wordCount.keySet();
 		
 		for(String word : keys){
 			if(Arrays.asList(CommentStatistics.negativeWords).contains(word)){
-				negCount += (word.length() * comment.wordCount.get(word));
+				negCount += comment.wordCount.get(word);
 	
 			}
 		}		
 		
-		return ((double) negCount / (double) comment.numWords);
+		return negCount;
 	}
 	
-	// Racist words
-	public static double percentRacist(CommentParser comment){
+	// Returns the ratio of positive to negative words in a comment
+	// Returns -1 if a ratio comparison wouldn't make sense
+	public static double posNegRatio(CommentParser comment){	
 		
-		int racistCount = 0;
-		Set<String> keys = comment.wordCount.keySet();
-		
-		for(String word : keys){
-			if(Arrays.asList(CommentStatistics.racistWords).contains(word)){
-				racistCount += (word.length() * comment.wordCount.get(word));
-	
-			}
-		}		
-		
-		return ((double) racistCount / (double) comment.numWords);
-	}
-	
-	// Sexist words
-	public static double percentSexist(CommentParser comment){
-		
-		int sexistCount = 0;
-		Set<String> keys = comment.wordCount.keySet();
-		
-		for(String word : keys){
-			if(Arrays.asList(CommentStatistics.sexistWords).contains(word)){
-				sexistCount += (word.length() * comment.wordCount.get(word));
-	
-			}
-		}		
-		
-		return ((double) sexistCount / (double) comment.numWords);
-	}
-	
-	// Homophobic words
-	public static double percentHomophobic(CommentParser comment){
-		
-		int homoCount = 0;
-		Set<String> keys = comment.wordCount.keySet();
-		
-		for(String word : keys){
-			if(Arrays.asList(CommentStatistics.homophobicWords).contains(word)){
-				homoCount += (word.length() * comment.wordCount.get(word));
-	
-			}
-		}		
-		
-		return ((double) homoCount / (double) comment.numWords);
-	}
-	
-	// Profanity
-	public static double percentProfanity(CommentParser comment){
-		
-		int swearCount = 0;
-		Set<String> keys = comment.wordCount.keySet();
-		
-		for(String word : keys){
-			if(Arrays.asList(CommentStatistics.swearWords).contains(word)){
-				swearCount += (word.length() * comment.wordCount.get(word));
-	
-			}
-		}		
-		
-		return ((double) swearCount / (double) comment.numWords);
-	}
-	
-	// Emoji's
-	public static double percentEmoji(CommentParser comment){
-		int emojiCount = 0;
-		Set<String> keys = comment.wordCount.keySet();
-		
-		for(String word : keys){
-			if(Arrays.asList(CommentStatistics.emojiWords).contains(word)){
-				emojiCount += (word.length() * comment.wordCount.get(word));
-	
-			}
-		}		
-		
-		return ((double) emojiCount / (double) comment.numWords);
-	}
-	
-	// Miscellaneous words
-	public static double percentMiscellaneous(CommentParser comment){
-		int miscCount = 0;
-		Set<String> keys = comment.wordCount.keySet();
-		
-		for(String word : keys){
-			if(Arrays.asList(CommentStatistics.miscellaneousWords).contains(word)){
-				miscCount += (word.length() * comment.wordCount.get(word));
-	
-			}
-		}		
-		
-		return ((double) miscCount / (double) comment.numWords);
+		int countPositive = CommentStatistics.countPositive(comment);
+		int countNegative = CommentStatistics.countNegative(comment);
+
+		if(countNegative == 0 || countPositive == 0){
+			return -1;
+		}else{
+			return (double)countPositive / (double)countNegative;
+		}
 	}
 	
 }

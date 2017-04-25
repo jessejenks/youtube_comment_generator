@@ -82,6 +82,9 @@ public class CommentParser {
 		System.out.print("Comment: ");
 		System.out.println(this.comment);
 		System.out.println("==========");
+		System.out.print("Num Words: ");
+		System.out.println(this.numWords);
+		System.out.println("Words");
 		
 		Set<String> keys = wordCount.keySet();
 		
@@ -100,23 +103,11 @@ public class CommentParser {
 		System.out.println("============");
 		System.out.print("Average word length: ");
 		System.out.println(CommentStatistics.avgWordLength(this));
-		System.out.print("Percent words all caps: ");
-		System.out.println(CommentStatistics.percentAllCaps(this));
-		System.out.print("Percent words positive: ");
-		System.out.println(CommentStatistics.percentPositive(this));
-		System.out.print("Percent words negative: ");
-		System.out.println(CommentStatistics.percentNegative(this));
-		System.out.print("Percent words racist: ");
-		System.out.println(CommentStatistics.percentRacist(this));
-		System.out.print("Percent words sexist: ");
-		System.out.println(CommentStatistics.percentSexist(this));
-		System.out.print("Percent words homophobic: ");
-		System.out.println(CommentStatistics.percentHomophobic(this));
-		System.out.print("Percent words profanity: ");
-		System.out.println(CommentStatistics.percentProfanity(this));
-		System.out.print("Percent words miscellaneous: ");
-		System.out.println(CommentStatistics.percentMiscellaneous(this));
-		System.out.print("Percent words emojis: ");
-		System.out.println(CommentStatistics.percentEmoji(this));
+		System.out.print("Number words positive: ");
+		System.out.println(CommentStatistics.countPositive(this));
+		System.out.print("Number words negative: ");
+		System.out.println(CommentStatistics.countNegative(this));
+		System.out.print("Positive-Negative word ratio: ");
+		System.out.println(CommentStatistics.posNegRatio(this));
 	}
 }

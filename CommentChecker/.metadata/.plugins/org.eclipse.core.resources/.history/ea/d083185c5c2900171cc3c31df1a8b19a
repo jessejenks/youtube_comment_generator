@@ -1,0 +1,70 @@
+import java.util.Arrays;
+import java.util.Set;
+
+public class CommentStatistics {
+
+	// Word categories
+	// Positive and negative are parsed on the main call
+	public static String[] positiveWords;
+	public static String[] negativeWords;
+	// WARNING: THERE ARE RACIAL, SEXIST, AND HOMOPHOBIC SLURS HERE
+	// This is meant purely as documentation of whatever text is generated. 
+	// This is not to condone the use of this dialogue, but to provide some statistical significance of what is generated.
+	private static String[] emojiWords = {":)", ":(", ":D", "D:", ":P", ":p", "B)", ":'(", "X)", "0.o", "XD"};
+	private static String[] swearWords = {"damn", "hell", "shit", "ass", "crap", "fuck", "piss", "dick", "cock", "pissing", "fucking", "shitting", "asshole", "douchebag"};
+	private static String[] racistWords = {"nigger", "nigga", "chink", "towelhead", "goop", "jap", "darkie", "gyp", "gypsie", "uppity", "gypsy"};
+	private static String[] sexistWords = {"bitch", "whore", "slut", "cunt", "pussy"};
+	private static String[] homophobicWords = {"faggot", "fag", "assfag"};
+	private static String[] miscellaneousWords = {"the", "as", "is", "I", "you", "he", "she", "his", "her", "hers", "him", "there", "that", "this", "to", "too", "us", "we", "those", "these", "them", "your", "you're", "it", "it's", "so", "who", "what", "when", "where", "why"};
+	
+	// Computes the average word length of a comment
+	public static int avgWordLength(CommentParser comment){
+		
+		int allLength = 0;
+		Set<String> keys = comment.wordCount.keySet();
+		
+		for(String word : keys){
+			allLength += (word.length() * comment.wordCount.get(word));
+		}
+		
+		return (allLength / comment.numWords);
+	}
+	
+	// Positive words
+	public static int countPositive(CommentParser comment){
+		
+		int posCount = 0;
+		Set<String> keys = comment.wordCount.keySet();
+		
+		for(String word : keys){
+			if(Arrays.asList(CommentStatistics.positiveWords).contains(word)){
+				posCount += (word.length() * comment.wordCount.get(word));
+	
+			}
+		}		
+		
+		return posCount;
+	}
+	
+	// Negative words
+	public static int countNegative(CommentParser comment){
+		
+		int negCount = 0;
+		Set<String> keys = comment.wordCount.keySet();
+		
+		for(String word : keys){
+			if(Arrays.asList(CommentStatistics.negativeWords).contains(word)){
+				negCount += (word.length() * comment.wordCount.get(word));
+	
+			}
+		}		
+		
+		return negCount;
+	}
+	
+	// Returns the ratio of positive to negative words in a comment
+	public static int posNegRatio(CommentParser comment){		
+		return CommentStatistics.countPositive(comment) / CommentStatistics.countNegative(comment);
+	}
+	
+}

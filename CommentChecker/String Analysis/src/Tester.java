@@ -11,19 +11,45 @@ public class Tester {
 		// Parse the files for positive and negative words
 		CommentStatistics.positiveWords = Tester.parsePositive();
 		CommentStatistics.negativeWords = Tester.parseNegative();
-//		for(int i = 0; i < CommentStatistics.positiveWords.length; i++){
-//			System.out.println(CommentStatistics.positiveWords[i]);
-//		}
-//		for(int i = 0; i < CommentStatistics.negativeWords.length; i++){
-//			System.out.println(CommentStatistics.negativeWords[i]);
-//		}
 		
+		// These test parsing a singular comment, such as that which we generate
+		/**
+		// Analysis for comment 1
 		String channel = "H3H3";
 		String comment = "Wow Ethan! Great moves, keep it up. Proud of you.";
 		
 		CommentParser parser = new CommentParser(comment, channel);
 		parser.printWordCount();
 		parser.printStats();
+		
+		// Analysis for comment 2
+		String channel2 = "FoopleDoople";
+		String comment2 = "I hate this piece of absolute trash, you are terrible at making videos. I'm depressed from just watching this.";
+		
+		CommentParser parser2 = new CommentParser(comment2, channel2);
+		parser2.printWordCount();
+		parser2.printStats();
+		
+		// Analysis for comment 3
+		String channel3 = "Nuanced";
+		String comment3 = "I like some of it, but dislike other bits of it. There's many pleasant jokes, but I have a foul taste in my mouth...";
+		
+		CommentParser parser3 = new CommentParser(comment3, channel3);
+		parser3.printWordCount();
+		parser3.printStats();
+		
+		// Analysis for comment 4
+		String channel4 = "Flarple";
+		String comment4 = "Surplufluous Scrumpdidilyumptious forlumptious consumptious";
+		
+		CommentParser parser4 = new CommentParser(comment4, channel4);
+		parser4.printWordCount();
+		parser4.printStats();
+		**/
+		
+		//CSVParser csvParser = new CSVParser("src/comment_files/VapeNaysh.csv");
+		CSVParser csvParser = new CSVParser("src/comment_files/LiveToWin.csv");
+		csvParser.printWordCount();
 	}
 	
 	

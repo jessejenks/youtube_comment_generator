@@ -1,0 +1,15 @@
+import java.util.HashMap;
+
+public class CSVParser {
+
+	public String fileName;
+	public HashMap<String, Integer> wordCount;
+	
+	
+	public CSVParser(String fileName){
+		
+		this.fileName = fileName;
+		this.wordCount = new HashMap<String, Integer>();
+		
+	}
+}
