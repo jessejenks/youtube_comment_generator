@@ -122,7 +122,7 @@ public class CSVParser {
 		
 		Set<String> copy = keys;
 		Set<String> sorted = new HashSet<String>();		
-		String[] allKeys = (String[]) keys.toArray();
+		String[] allKeys = keys.toArray(new String[keys.size()]);
 		
 		while(allKeys.length > 0){
 			

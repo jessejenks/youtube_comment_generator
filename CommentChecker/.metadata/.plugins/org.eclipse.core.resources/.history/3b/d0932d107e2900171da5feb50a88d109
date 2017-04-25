@@ -4,7 +4,6 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.Scanner;
 import java.util.Set;
 
@@ -107,7 +106,6 @@ public class CSVParser {
 		System.out.println("Words: ");
 		
 		Set<String> keys = wordCount.keySet();
-		keys = this.sortKeys(keys);
 		
 		for(String word : keys){
 			
@@ -116,31 +114,5 @@ public class CSVParser {
 			
 		}
 		
-	}
-	
-	private Set<String> sortKeys(Set<String> keys){
-		
-		Set<String> copy = keys;
-		Set<String> sorted = new HashSet<String>();		
-		String[] allKeys = (String[]) keys.toArray();
-		
-		while(allKeys.length > 0){
-			
-			String currMax = allKeys[0];
-			
-			for(int i = 0; i < allKeys.length; i++){
-				
-				if(wordCount.get(allKeys[i]) >= wordCount.get(currMax)){
-					currMax = allKeys[i];
-				}
-				
-			}
-			
-			sorted.add(currMax);
-			copy.remove(currMax);
-			allKeys = (String[]) keys.toArray();
-		}
-		
-		return sorted;
 	}
 }

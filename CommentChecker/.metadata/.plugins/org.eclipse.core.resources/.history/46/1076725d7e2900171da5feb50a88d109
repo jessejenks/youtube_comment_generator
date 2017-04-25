@@ -120,7 +120,6 @@ public class CSVParser {
 	
 	private Set<String> sortKeys(Set<String> keys){
 		
-		Set<String> copy = keys;
 		Set<String> sorted = new HashSet<String>();		
 		String[] allKeys = (String[]) keys.toArray();
 		
@@ -136,8 +135,7 @@ public class CSVParser {
 				
 			}
 			
-			sorted.add(currMax);
-			copy.remove(currMax);
+			sorted.remove(currMax);
 			allKeys = (String[]) keys.toArray();
 		}
 		
