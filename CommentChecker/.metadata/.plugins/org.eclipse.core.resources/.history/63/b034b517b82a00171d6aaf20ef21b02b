@@ -45,9 +45,9 @@ public class CSVParser {
 				for(int i = 0; i < data.length; i++){
 					//System.out.println(data[i]);
 				}
-				//if(data.length >= 5){
-					this.parseComment(data[0]);
-				//}
+				if(data.length >= 5){
+					this.parseComment(data[4]);
+				}
 				
 			}
 			
@@ -110,7 +110,7 @@ public class CSVParser {
 //				System.out.print(word + ": ");
 //				System.out.println(this.wordCount.get(word));
 				try {
-					bwriter.write(word + "," + this.wordCount.get(word) + "\n");
+					bwriter.write(word + ": " + this.wordCount.get(word) + "\n");
 				} catch (IOException e) {
 					e.printStackTrace();
 				}

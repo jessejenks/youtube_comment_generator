@@ -13,28 +13,28 @@ public class Tester {
 		CommentStatistics.negativeWords = Tester.parseNegative();
 		
 		//CSVParser csvParser = new CSVParser("src/comment_files/VapeNaysh.csv");
-		CSVParser csvParser = new CSVParser("src/comment_files/youngThug");
+		CSVParser csvParser = new CSVParser("src/comment_files/AlexJones");
 		csvParser.printWordCount();
-//		csvParser = new CSVParser("src/comment_files/buzz");
-//		csvParser.printWordCount();
-//		csvParser = new CSVParser("src/comment_files/KidsReact");
-//		csvParser.printWordCount();
-//		csvParser = new CSVParser("src/comment_files/LiveToWin");
-//		csvParser.printWordCount();
-//		csvParser = new CSVParser("src/comment_files/numberphile");
-//		csvParser.printWordCount();
-//		csvParser = new CSVParser("src/comment_files/PinkGuy");
-//		csvParser.printWordCount();
-//		csvParser = new CSVParser("src/comment_files/PorcupineEatsPumpkin");
-//		csvParser.printWordCount();
-//		csvParser = new CSVParser("src/comment_files/ScreamingGoats");
-//		csvParser.printWordCount();
-//		csvParser = new CSVParser("src/comment_files/TryGuys");
-//		csvParser.printWordCount();
-//		csvParser = new CSVParser("src/comment_files/VapeNaysh");
-//		csvParser.printWordCount();
-//		csvParser = new CSVParser("src/comment_files/youngThug");
-//		csvParser.printWordCount();
+		csvParser = new CSVParser("src/comment_files/buzz");
+		csvParser.printWordCount();
+		csvParser = new CSVParser("src/comment_files/KidsReact");
+		csvParser.printWordCount();
+		csvParser = new CSVParser("src/comment_files/LiveToWin");
+		csvParser.printWordCount();
+		csvParser = new CSVParser("src/comment_files/numberphile");
+		csvParser.printWordCount();
+		csvParser = new CSVParser("src/comment_files/PinkGuy");
+		csvParser.printWordCount();
+		csvParser = new CSVParser("src/comment_files/PorcupineEatsPumpkin");
+		csvParser.printWordCount();
+		csvParser = new CSVParser("src/comment_files/ScreamingGoats");
+		csvParser.printWordCount();
+		csvParser = new CSVParser("src/comment_files/TryGuys");
+		csvParser.printWordCount();
+		csvParser = new CSVParser("src/comment_files/VapeNaysh");
+		csvParser.printWordCount();
+		csvParser = new CSVParser("src/comment_files/youngThug");
+		csvParser.printWordCount();
 	}
 	
 	

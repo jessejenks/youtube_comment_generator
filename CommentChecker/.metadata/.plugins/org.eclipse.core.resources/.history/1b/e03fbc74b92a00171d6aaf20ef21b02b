@@ -13,7 +13,7 @@ public class Tester {
 		CommentStatistics.negativeWords = Tester.parseNegative();
 		
 		//CSVParser csvParser = new CSVParser("src/comment_files/VapeNaysh.csv");
-		CSVParser csvParser = new CSVParser("src/comment_files/youngThug");
+		CSVParser csvParser = new CSVParser("src/comment_files/PinkGuy");
 		csvParser.printWordCount();
 //		csvParser = new CSVParser("src/comment_files/buzz");
 //		csvParser.printWordCount();

@@ -45,9 +45,9 @@ public class CSVParser {
 				for(int i = 0; i < data.length; i++){
 					//System.out.println(data[i]);
 				}
-				//if(data.length >= 5){
-					this.parseComment(data[0]);
-				//}
+				if(data.length >= 5){
+					this.parseComment(data[4]);
+				}
 				
 			}
 			

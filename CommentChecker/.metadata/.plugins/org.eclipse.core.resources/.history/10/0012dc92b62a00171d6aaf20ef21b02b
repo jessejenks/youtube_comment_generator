@@ -15,13 +15,11 @@ public class CSVParser {
 
 	public String fileName;
 	public HashMap<String, Integer> wordCount;
-	public String writerName;
 	
 	
 	public CSVParser(String fileName){
 		
 		this.fileName = fileName + ".csv";
-		this.writerName = fileName + ".txt";
 		this.wordCount = new HashMap<String, Integer>();
 		this.parseFile();
 		
@@ -45,9 +43,9 @@ public class CSVParser {
 				for(int i = 0; i < data.length; i++){
 					//System.out.println(data[i]);
 				}
-				//if(data.length >= 5){
-					this.parseComment(data[0]);
-				//}
+				if(data.length >= 5){
+					this.parseComment(data[4]);
+				}
 				
 			}
 			
@@ -90,32 +88,19 @@ public class CSVParser {
 			e.printStackTrace();
 		}
 		
-//		System.out.print("File: ");
-//		System.out.println(this.fileName);
-//		System.out.println("==========");
-//		System.out.println("Words: ");
-		try {
-			bwriter.write("File: " + this.fileName + "\n ========== \n Words: \n");
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+		System.out.print("File: ");
+		System.out.println(this.fileName);
+		System.out.println("==========");
+		System.out.println("Words: ");
 		
-		
+		bwriter.write("File: ");
 		
 		ArrayList<String> keys = this.sortKeys(wordCount.keySet());
 		
 		for(String word : keys){
 			
-			if(!word.equals("")){
-//				System.out.print(word + ": ");
-//				System.out.println(this.wordCount.get(word));
-				try {
-					bwriter.write(word + "," + this.wordCount.get(word) + "\n");
-				} catch (IOException e) {
-					e.printStackTrace();
-				}
-			}
-
+			System.out.print(word + ": ");
+			System.out.println(this.wordCount.get(word));
 			
 		}
 		
