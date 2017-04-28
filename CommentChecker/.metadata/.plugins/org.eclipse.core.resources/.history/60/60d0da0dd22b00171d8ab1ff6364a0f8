@@ -137,7 +137,6 @@ public class CSVParser {
 		String[] allKeys = keys.toArray(new String[keys.size()]);
 		
 		for(int i = 0; i < allKeys.length; i++){
-			System.out.println(i);
 			
 			String currMax = "";
 			for(int k = 0; k < allKeys.length; k++){
