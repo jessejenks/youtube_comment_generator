@@ -21,11 +21,26 @@
 \maketitle
 
 \section{Introduction}
-We wanted to apply AI concepts to something that couldn't just be solved by a greedy algorithm.
+Text generation using artificial intelligence techniques/procedures is not a novel undertaking; the field of Natural Language Processing speaks to the large undertaking by computer scientists to generate text in an "organic" manner. Many of these techniques require tediously long amounts of training data structures on training sets to provide some basis on patterns and expected behaviour. A common theme discussed in the training process is the phenomenon of "overfitting": excessively training a data structure to the specific patterns of a given training set. The structure loses generalizability and as such performs suboptimally in diverse situations. This can occur through two fallacies of the programmer.
+
+\begin{enumerate}
+	\item Running the training procedure too much.
+	\item Training on very specific data.
+\end{enumerate}
+
+We were curious about the second shortcoming, and wanted generate clear examples of what happens with insufficient training. We trained both a Markov Chain and a Recurrent Neural Network (RNN) to various data sets retrieved from Youtube videos to see how the training set would affect the output. What we found was a lesson in training sets.
 
 \section{Related Works}
 
 \section{Background}
+
+To highlight the training set fallacy, we retrieved Youtube comments from distinct viewer bases. Here is context to the videos we used.
+
+\begin{itemize}
+	\item \textbf{Alex Jones:} Online conspiracy host of Info Wars gives his reasons as to why the Sandy Hook Massacre was a staged government hoax.
+	\item \textbf{Buzz Aldrin Punches Reporter:} While being questioned by paparrazi as to if the moon landing was fake, astronaut Buzz Aldrin punches a reporter in the face.
+	\item \textbf{Kids React to SuperBowl Commercials, 2017:} Part of a "React" channel, children are shown commercials advertised in the 2017 SuperBowl.
+\end{itemize}
 
 \section{System Description}
 
